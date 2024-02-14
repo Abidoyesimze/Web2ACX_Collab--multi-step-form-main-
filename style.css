@@ -1,0 +1,280 @@
+* {
+    box-sizing: border-box;
+    border: none;
+    padding: 0;
+    margin: 0;
+}
+
+:root {
+
+    /* ## Layout */
+    --mobile-width: 375px;
+    --Desktop-width: 1440px;
+
+    /* **## Colors** */
+
+    /* ### Primary */
+    --Marine-blue: hsl(213, 96%, 18%);
+    --Purplish-blue: hsl(243, 100%, 62%);
+    --Pastel-blue: hsl(228, 100%, 84%);
+    --Light-blue: hsl(206, 94%, 87%);
+    --Strawberry-red: hsl(354, 84%, 57%);
+
+    /* ### Neutral */
+    --Cool-gray: hsl(231, 11%, 63%);
+    --Light-gray: hsl(229, 24%, 87%);
+    --Magnolia: hsl(217, 100%, 97%);
+    --Alabaster: hsl(231, 100%, 99%);
+    --White: hsl(0, 0%, 100%);
+
+    /* ***## Typography*** */
+
+    /* ### Body Copy */
+    --font-size-paragraph: 16px;
+
+    /* ### Font */
+    --font-weight-400: 400;
+    --font-weight-500: 500;
+    --font-weight-700: 700;
+}
+
+/* 
+---------------------------------------
+========== GLOBAL STYLING =============
+---------------------------------------
+*/
+body {
+    background: var(--Magnolia);
+    width: 100vw;
+    height: 100vh;
+}
+.main-container {
+    width: 66%;
+    height: 80%;
+    background-color: var(--White);
+    padding: 10px;
+    border-radius: 15px;
+    flex-wrap: wrap;
+    box-shadow: 1px 2px 15px -5px var(--Light-gray);
+}
+.flex {
+    display: flex;
+}
+.column {
+    flex-direction: column;
+}
+.center {
+    justify-content: center;
+    align-items: center;
+}
+.btn {
+    padding: 15px 30px;
+    color: var(--White);
+    background-color: var(--Marine-blue);
+    border-radius: 10px;
+    cursor: pointer;
+}
+
+/* 
+------------------------------------------
+========== SIDE-BAR STYLING =============
+------------------------------------------
+*/
+nav {
+    flex: 2;
+    height: 100%;
+    background: url("./assets/images/bg-sidebar-desktop.svg");
+    background-size: cover;
+    border-radius: 15px;
+    padding: 30px;
+}
+nav ul {
+    height: 50%;
+    justify-content: space-between;
+}
+section {
+    width: 100%;
+    border-radius: 10px;
+}
+.option-no {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 30px;
+    height: 30px;
+    font-weight: var(--font-weight-700);
+    border: 1px solid var(--Light-gray);
+    color: var(--Light-gray);
+    border-radius: 50%;
+    margin-right: 15px;
+}
+.option {
+    display: flex;
+    align-items: center;
+}
+.option-content {
+    text-transform: uppercase;
+    line-height: 1.2rem;
+}
+.option-content p {
+    font-size: 12px;
+    color: var(--Light-gray);
+}
+.option-content h3 {
+    font-size: 14px;
+    color: var(--Magnolia);
+}
+.option:hover .option-no,
+.active{
+    background-color: var(--Pastel-blue);
+    border-color: var(--Pastel-blue);
+    color: var(--Marine-blue);
+}
+/* 
+----------------------------------------------
+============ FORM CONTAINER STYLING ==========
+----------------------------------------------
+*/
+.main-form-section {
+    flex: 6;
+    padding: 20px;
+    justify-content: space-between;
+    align-items: center;
+}
+.form-section-container {
+    position: relative;
+    width: 75%;
+}
+section {
+    position: absolute;
+    visibility: hidden;
+    /* background-color: var(--Alabaster); */
+}
+
+/* 
+-----------------------------------
+============ MAIN FORM 1 ==========
+-----------------------------------
+*/
+.section-title {
+    line-height: 2.3rem;
+    padding-top: 15px;
+}
+.section-title h1 {
+    font-size: 38px;
+    color: var(--Marine-blue);
+}
+.section-title h4 {
+    font-size: 16px;
+    font-weight: 500;
+    color: var(--Light-gray);
+}
+form {
+    gap: 20px;
+}
+input {
+    width: 100%;
+    height: 40px;
+    border-radius: 5px;
+    font-size: 18px;
+    color: var(--Light-gray);
+    border: 1px solid var(--Light-gray);
+    padding: 25px 15px;
+    /* cursor: pointer; */
+}
+input:focus {
+    outline-color: var(--Marine-blue);
+}
+.label {
+    justify-content: space-between;
+    margin-bottom: 5px;
+    color: var(--Marine-blue);
+    font-weight: 500;
+}
+.label p {
+    font-weight: var(--font-weight-700);
+    color: var(--Strawberry-red);
+}
+form {
+    margin-top: 20px;
+}
+
+.form-nav-section {
+    width: 70%;
+    justify-content: space-between;
+    align-items: center;
+}
+.back,
+.error-message {
+    visibility: hidden;
+}
+
+/* 
+------------------------------------------
+========== REUSEABLE STYLING =============
+------------------------------------------
+*/
+.option,
+.btn,
+.back,
+input {
+    cursor: pointer;
+}
+
+.show {
+    /* display: block; */
+    visibility: visible;
+    z-index: 2;
+}
+ 
+@media screen and (max-width: 800px) {
+    body {
+        position: relative;
+    }
+    .flex column{
+        position: fixed;
+        top: 0;
+        left: 0;
+        right: 0;
+        background-image: url("./assets/images/bg-sidebar-mobile.svg");
+        flex-direction: row;
+        height: 300px;
+        background-size: cover;
+        width: 100%;
+        align-items: flex-start;
+        justify-content: center;
+        z-index: 1;
+    }
+    .option-content{
+        display: none;
+    }
+    .show{
+        position: absolute;
+        top: 15%;
+        max-width: 375px;
+        background-color: white;
+    }
+    .main-form-section flex column{
+        padding: 2rem;
+    }
+    .btns{
+        position: fixed;
+        bottom: 0;
+        background-color: white;
+        right: 0;
+        left: 0;
+        height: 100px;
+        padding-inline: 1rem;
+    }
+    .btn{
+        margin: auto 0 auto auto;
+    }
+    .main-form{
+        flex-direction: column;
+        gap: 0.5rem;
+    }
+    .attribution{
+        position: fixed;
+        width: 100%;
+    }
+}
